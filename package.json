@@ -1,6 +1,6 @@
 {
   "name": "event-listener-service",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simple helper class to help you stay DRY (Don't repeat yourself)",
   "main": "index.js",
   "typings": "index.d.ts",
@@ -35,7 +35,7 @@
     "url": "https://github.com/NoHomey/event-listener-service/issues"
   },
   "homepage": "https://github.com/NoHomey/event-listener-service#readme",
-  "dependencies": { },
+  "dependencies": {},
   "devDependencies": {
     "codeclimate-test-reporter": "^0.3.3",
     "jest": "^15.1.1",
