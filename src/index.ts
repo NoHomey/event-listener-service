@@ -1,15 +1,15 @@
 export interface EventListenerImplementation {
-    addListener: (event: string, listener: Function, ...additional: any[]) => void;
-    removeListener: (event: string, listener: Function, ...additional: any[]) => void;
+    addListener: (eventName: string, listener: (event?: any) => void, ...additional: any[]) => void;
+    removeListener: (eventName: string, listener: (event?: any) => void, ...additional: any[]) => void;
 }
 
 export interface EventListenerRegisterdListener {
-    event: string;
-    listener: Function;
+    eventName: string;
+    listener: (event?: any) => void;
 }
 
 interface Emit {
-    event: string;
+    eventName: string;
     emitted: any;
 }
 
@@ -25,7 +25,7 @@ export class EventListenerService {
 
     private static emitToLisener(registered: EventListenerRegisterdListener): void {
         const emit: Emit = this as any;
-        if(emit.event === registered.event) {
+        if(emit.eventName === registered.eventName) {
             emit.emitted ? registered.listener(emit.emitted) : registered.listener();
         }
     }
@@ -33,7 +33,7 @@ export class EventListenerService {
     private static findIndexOf(wanted: EventListenerRegisterdListener): number {
         const { registered } = EventListenerService;
         for(let index: number = constants.zero; index < registered.length; ++index) {
-            if((wanted.event === registered[index].event) && (wanted.listener === registered[index].listener)) {
+            if((wanted.eventName === registered[index].eventName) && (wanted.listener === registered[index].listener)) {
                 return index;
             }
         }
@@ -51,33 +51,33 @@ export class EventListenerService {
         if(previus && ((previus.addListener !== implementation.addListener) || (previus.removeListener !== implementation.removeListener))) {
             while(registered.length) {
                 listener = registered[registered.length - constants.one];
-                previus.removeListener(listener.event, listener.listener);
+                previus.removeListener(listener.eventName, listener.listener);
                 registered.pop();
             }
         }
         EventListenerService.implementation = implementation;
     }
 
-    public static addListener(event: string, listener: Function, ...additional: any[]): void {
+    public static addListener(eventName: string, listener: (event?: any) => void, ...additional: any[]): void {
         const { implementation, findIndexOf } = EventListenerService;
-        const register: EventListenerRegisterdListener = { event: event, listener: listener };
+        const register: EventListenerRegisterdListener = { eventName: eventName, listener: listener };
         if(findIndexOf(register) === constants.minusOne) {
             EventListenerService.registered.push(register);
-            if(implementation !== null) implementation.addListener(event, listener, ...additional);
+            if(implementation !== null) implementation.addListener(eventName, listener, ...additional);
         }
     }
 
-    public static emit(event: string, emitted?: any): void {
+    public static emit(eventName: string, emitted?: any): void {
         const { registered, emitToLisener } = EventListenerService;
-        registered.forEach(emitToLisener, { event: event, emitted: emitted });
+        registered.forEach(emitToLisener, { eventName: eventName, emitted: emitted });
     }
 
-    public static removeListener(event: string, listener: Function, ...additional: any[]): void {
+    public static removeListener(eventName: string, listener: (event?: any) => void, ...additional: any[]): void {
         const { implementation } = EventListenerService;
-        const index: number = EventListenerService.findIndexOf({ event: event, listener: listener });
+        const index: number = EventListenerService.findIndexOf({ eventName: eventName, listener: listener });
         if(index !== constants.minusOne) {
             EventListenerService.registered.splice(index, constants.one);
-            if(implementation !== null) implementation.removeListener(event, listener, ...additional);
+            if(implementation !== null) implementation.removeListener(eventName, listener, ...additional);
         }
     }
 };
