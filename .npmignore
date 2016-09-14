@@ -1,0 +1,11 @@
+src
+__tests__
+coverage
+typings
+.vscode
+lcov.info
+tsconfig.json
+typings.json
+.codeclimate.yml
+.gitignore
+.npmignore

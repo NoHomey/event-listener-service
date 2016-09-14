@@ -35,3 +35,11 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+*.map
+*.js
+*.d.ts
+coverage
+lcov.info
+typings
+.vscode
