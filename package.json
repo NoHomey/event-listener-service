@@ -1,6 +1,6 @@
 {
   "name": "event-listener-service",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Universal Event Litener with testability built in",
   "main": "index.js",
   "typings": "index.d.ts",
