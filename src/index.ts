@@ -23,13 +23,6 @@ export class EventListenerService {
     private static implementation: EventListenerImplementation;
     private static registered: EventListenerRegisterdListener[] = [];
 
-    private static emitToLisener(registered: EventListenerRegisterdListener): void {
-        const emit: Emit = this as any;
-        if(emit.eventName === registered.eventName) {
-            emit.emitted ? registered.listener(emit.emitted) : registered.listener();
-        }
-    }
-
     private static findIndexOf(wanted: EventListenerRegisterdListener): number {
         const { registered } = EventListenerService;
         for(let index: number = constants.zero; index < registered.length; ++index) {
@@ -68,8 +61,11 @@ export class EventListenerService {
     }
 
     public static emit(eventName: string, emitted?: any): void {
-        const { registered, emitToLisener } = EventListenerService;
-        registered.forEach(emitToLisener, { eventName: eventName, emitted: emitted });
+        for(let listener of EventListenerService.registered) {
+            if(listener.eventName === eventName) {
+                emitted ? listener.listener(emitted) : listener.listener();
+            }
+        }
     }
 
     public static removeListener(eventName: string, listener: (event?: any) => void, ...additional: any[]): void {
