@@ -10,7 +10,6 @@
     "map-cov": "remap-istanbul -i ./coverage/coverage-final.json -t lcovonly -o ./lcov.info",
     "report-cov": "codeclimate-test-reporter < ./lcov.info",
     "coverage": "npm run jest-cov && npm run map-cov && npm run report-cov",
-    "typings": "typings install",
     "npm": "npm run clean && tsc -d -p . && mv ./src/index.js . && mv ./src/index.d.ts .",
     "clean": "rm -f ./src/index.js* ./__tests__/*.d.ts ./__tests__/*.js* ./lcov.info  && rm -f -R ./coverage"
   },
