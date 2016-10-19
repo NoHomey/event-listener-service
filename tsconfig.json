@@ -3,13 +3,16 @@
         "module": "commonjs",
         "target": "es5",
         "noImplicitAny": true,
+        "strictNullChecks": true,
+        "noImplicitThis": true,
+        "noUnusedParameters": true,
+        "noUnusedLocals": true,
         "experimentalDecorators": true,
         "jsx": "react"
     },
-    "files": [
-        "src/index.ts",
-        "typings/index.d.ts",
-        "__tests__/index.spec.ts"
+    "include": [
+        "src/**/*",
+        "__tests__/**/*"
     ],
     "exclude": [
         "node_modules"

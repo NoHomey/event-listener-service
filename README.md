@@ -7,9 +7,16 @@ Universal Event Litener with testability built in
 [![Code Climate](https://codeclimate.com/github/NoHomey/event-listener-service/badges/gpa.svg)](https://codeclimate.com/github/NoHomey/event-listener-service)
 [![Test Coverage](https://codeclimate.com/github/NoHomey/event-listener-service/badges/coverage.svg)](https://codeclimate.com/github/NoHomey/event-listener-service/coverage)
 [![Issue Count](https://codeclimate.com/github/NoHomey/event-listener-service/badges/issue_count.svg)](https://codeclimate.com/github/NoHomey/event-listener-service)
-
+![TypeScript](https://img.shields.io/badge/%3C%20%2F%3E-TypeScript-blue.svg)
+![Typings](https://img.shields.io/badge/typings-%E2%9C%93-brightgreen.svg)
 
 # Install
+
+Install with npm:
+
+```bash
+$ npm install event-listener-service
+```
 
 [![NPM](https://nodei.co/npm/event-listener-service.png?downloads=true&stars=true)](https://nodei.co/npm/event-listener-service/)
 
@@ -106,20 +113,16 @@ EventListnerService.removeListener(eventName: string, listener: (event?: any) =>
 
 1. `npm install`
 
-2. `npm run typings`
-
-3. `npm test`
+2. `npm test`
 
 # Contributing
 
 1. `npm install`
 
-2. `npm run typings`
+2. Make changes
 
-3. Make changes
+3. If necessary add some tests to `__tests__`
 
-4. If necessary add some tests to `__tests__`
+4. `npm test`
 
-5. `npm test`
-
-6. Make a Pull Request
+5. Make a Pull Request

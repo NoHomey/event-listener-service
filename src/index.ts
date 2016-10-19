@@ -8,11 +8,6 @@ export interface EventListenerRegisterdListener {
     listener: (event?: any) => void;
 }
 
-interface Emit {
-    eventName: string;
-    emitted: any;
-}
-
 namespace constants {
     export const minusOne: number = -1;
     export const zero: number = 0;
@@ -20,7 +15,7 @@ namespace constants {
 }
 
 export class EventListenerService {
-    private static implementation: EventListenerImplementation;
+    private static implementation: EventListenerImplementation | null;
     private static registered: EventListenerRegisterdListener[] = [];
 
     private static findIndexOf(wanted: EventListenerRegisterdListener): number {
