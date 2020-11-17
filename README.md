@@ -18,8 +18,6 @@ Install with npm:
 $ npm install event-listener-service
 ```
 
-[![NPM](https://nodei.co/npm/event-listener-service.png?downloads=true&stars=true)](https://nodei.co/npm/event-listener-service/)
-
 # Api
 
 ## public static useWithoutImplementation(): void
