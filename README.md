@@ -1,5 +1,5 @@
 # event-listener-service
-Universal Event Litener with testability built in
+Universal Event Listener service with testability built in
 
 [![npm version](https://badge.fury.io/js/event-listener-service.svg)](https://badge.fury.io/js/event-listener-service)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/NoHomey/event-listener-service)
